@@ -8,4 +8,4 @@ const pool = new Pool({
   database: 'consultoriodb'
 });
 
-module.exports = pool;
+module.exports = { pool };

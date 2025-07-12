@@ -1,6 +1,6 @@
 const pool = require('../db.js');
 
-const getPacientes = async function getPacientes(req, res) {
+const getPacientes = async function (req, res) {
   try {
     const { rows } = await pool.query('SELECT * FROM pacientes');
     res.json(rows);
@@ -10,7 +10,7 @@ const getPacientes = async function getPacientes(req, res) {
   }
 }
 
-const getPacienteById = async function getPacienteById(req, res) {
+const getPacienteById = async function (req, res) {
   try {
     const { id } = req.params;
     const { rows } = await pool.query('SELECT * FROM pacientes WHERE id = $1', [id]);
@@ -24,7 +24,7 @@ const getPacienteById = async function getPacienteById(req, res) {
   }
 }
 
-const createPaciente = async function createPaciente(req, res) {
+const createPaciente = async function (req, res) {
   try {
     const { nombre, apellido, dni, fecha_nacimiento, email, telefono } = req.body;
     const {rows} = await pool.query(
@@ -46,7 +46,7 @@ const createPaciente = async function createPaciente(req, res) {
   }
 }
 
-const updatePaciente = async function updatePaciente(req, res) {
+const updatePaciente = async function (req, res) {
   try {
     const { id } = req.params;
     const { nombre, apellido, dni, fecha_nacimiento, email, telefono } = req.body;
@@ -67,7 +67,7 @@ const updatePaciente = async function updatePaciente(req, res) {
   }
 }
 
-const deletePaciente = async function deletePaciente(req, res) {
+const deletePaciente = async function (req, res) {
   try {
     const { id } = req.params;
     const result = await pool.query('DELETE FROM pacientes WHERE id = $1', [id]);
@@ -81,12 +81,10 @@ const deletePaciente = async function deletePaciente(req, res) {
   }
 }
 
-const pacienteCRUD={
+module.exports = {
   getPacientes,
   getPacienteById,
   createPaciente,
   updatePaciente,
   deletePaciente
-}
-
-module.exports = pacienteCRUD;
+};
