@@ -98,14 +98,12 @@ const deleteCita = async function deleteCita(req, res) {
     console.error(error);
     res.status(500).json({ message: "Error al eliminar la cita" });
   }
-}
+} 
 
-const citasCRUD={
+module.exports = {
   getCitas,
   getCitaById,
   createCita,
   updateCita,
   deleteCita
-}
-
-module.exports = citasCRUD;
+};

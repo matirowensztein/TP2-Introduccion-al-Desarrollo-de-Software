@@ -10,7 +10,7 @@ const getMedicos = async function (req, res) {
   }
 }
 
-async function getMedicoById(req, res) {
+const getMedicoById = async function (req, res) {
   try {
     const { id } = req.params;
     const { rows } = await pool.query("SELECT * FROM medicos WHERE id = $1", [id]);
