@@ -1,0 +1,26 @@
+{
+  "name": "tp2-introduccion-al-desarrollo-de-software",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matirowensztein/TP2-Introduccion-al-Desarrollo-de-Software.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matirowensztein/TP2-Introduccion-al-Desarrollo-de-Software/issues"
+  },
+  "homepage": "https://github.com/matirowensztein/TP2-Introduccion-al-Desarrollo-de-Software#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.3"
+  }
+}
