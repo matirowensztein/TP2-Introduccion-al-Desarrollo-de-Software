@@ -1,6 +1,6 @@
 const { pool } = require("../db.js");
 
-const getCitas = async function getCitas(req, res) {
+const getCitas = async function (req, res) {
   try {
     const { rows } = await pool.query("SELECT * FROM citas");
     res.json(rows);
@@ -10,7 +10,7 @@ const getCitas = async function getCitas(req, res) {
   }
 }
 
-const getCitaById = async function getCitaById(req, res) {
+const getCitaById = async function (req, res) {
   try {
     const { id } = req.params;
     const { rows } = await pool.query("SELECT * FROM citas WHERE id = $1", [
@@ -26,7 +26,7 @@ const getCitaById = async function getCitaById(req, res) {
   }
 }
 
-const createCita = async function createCita(req, res) {
+const createCita = async function (req, res) {
   try {
     const {
       paciente_id,
@@ -56,7 +56,7 @@ const createCita = async function createCita(req, res) {
   }
 }
 
-const updateCita = async function updateCita(req, res) {
+const updateCita = async function (req, res) {
   try {
     const { id } = req.params;
     const {
@@ -86,7 +86,7 @@ const updateCita = async function updateCita(req, res) {
   }
 }
 
-const deleteCita = async function deleteCita(req, res) {
+const deleteCita = async function (req, res) {
   try {
     const { id } = req.params;
     const result = await pool.query("DELETE FROM citas WHERE id = $1", [id]);
