@@ -32,3 +32,13 @@ services:
       - ./server:/usr/src/app
     working_dir: /usr/src/app
     command: ["node", "index.js"]
+
+  frontend:
+    container_name: tp2-frontend
+    image: nginx:alpine
+    volumes:
+      - ./client:/usr/share/nginx/html:ro
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
