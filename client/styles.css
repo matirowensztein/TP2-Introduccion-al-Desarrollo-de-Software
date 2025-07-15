@@ -124,7 +124,8 @@ button:hover {
   background-color: #1d4ed8;
 }
 
-#cero-pacientes {
+#cero-pacientes,
+#cero-medicos {
   margin: auto;
   font-size: 24px;
   font-weight: bold;
@@ -146,13 +147,15 @@ button:hover {
   flex-wrap: wrap;
 }
 
-.busqueda-paciente {
+.busqueda-paciente,
+.busqueda-medico {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.busqueda-paciente input {
+.busqueda-paciente input,
+.busqueda-medico input {
   font-family: "Sora";
   padding: 8px;
   border-radius: 4px;
@@ -286,8 +289,6 @@ button:hover {
   gap: 8px;
   margin-top: 16px;
 }
-
-
 
 .footer {
   text-align: center;
