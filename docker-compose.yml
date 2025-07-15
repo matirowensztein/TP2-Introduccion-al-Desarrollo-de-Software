@@ -1,9 +1,11 @@
+version: '3.8'
+
 services:
   postgres:
-    container_name: tp2-introduccion-al-desarrollo-de-software 
+    container_name: tp2-db 
     image: postgres:17
     ports:
-      - "5434:5432"
+      - "5432:5432"
     volumes:
       - ./.volumes/postgres/data:/var/lib/postgresql/data/
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -11,3 +13,22 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: consultoriodb
+
+  backend:
+    container_name: tp2-backend
+    build:
+      context: ./server
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: consultoriodb
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./server:/usr/src/app
+    working_dir: /usr/src/app
+    command: ["node", "index.js"]
