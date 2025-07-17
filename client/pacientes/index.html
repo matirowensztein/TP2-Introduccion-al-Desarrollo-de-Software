@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <img src="../img/logo.png" class="logo" alt="" /> Consultorio
+      </div>
+      <div class="navbar-right">
+        <a href="../index.html">Inicio</a>
+        <a href="./index.html">Pacientes</a>
+        <a href="../medicos/index.html">Médicos</a>
+        <a href="../citas/index.html">Citas</a>
+      </div>
+    </nav>
+
+    <main>
+      <h1 class="titulo">Pacientes</h1>
+
+      <div class="busqueda-agregar">
+        <div class="busqueda-paciente">
+          <input
+            type="number"
+            id="inputNumerico"
+            placeholder="Ingresa un id"
+            min="1"
+          />
+          <button id="pacientesButton">Buscar paciente</button>
+        </div>
+        <button id="agregar-paciente" onClick="AbrirModalAgregarPaciente()">
+          Agregar paciente
+        </button>
+      </div>
+
+      <div
+        id="modal-crear-paciente"
+        class="modal-overlay"
+        style="display: none"
+      >
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Agregar paciente</h5>
+            <button class="modal-cerrar" onclick="CerrarModalAgregarPaciente()">
+              ✖
+            </button>
+          </div>
+          <form id="form-crear-paciente" class="formulario">
+            <input
+              id="crear-nombre"
+              type="text"
+              name="nombre"
+              placeholder="Nombre"
+              maxlength="100"
+              required
+            />
+            <input
+              id="crear-apellido"
+              type="text"
+              name="apellido"
+              placeholder="Apellido"
+              maxlength="100"
+              required
+            />
+            <input
+              id="crear-dni"
+              type="number"
+              name="dni"
+              placeholder="DNI"
+              required
+            />
+            <input
+              id="crear-fecha"
+              type="date"
+              max="2016-01-01"
+              name="fecha_nacimiento"
+              placeholder="Fecha de nacimiento"
+              required
+            />
+            <input
+              id="crear-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              maxlength="150"
+            />
+            <input
+              id="crear-tel"
+              type="tel"
+              name="telefono"
+              placeholder="Teléfono"
+              maxlength="50"
+            />
+            <button type="submit">Crear</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="pacientes-list" class="lista"></div>
+      <span id="cero-pacientes" style="display: none"
+        >No se encontraron pacientes.</span
+      >
+
+      <div
+        id="modal-editar-paciente"
+        class="modal-overlay"
+        style="display: none"
+      >
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Editar paciente</h5>
+            <button class="modal-cerrar" onclick="CerrarModalEditarPaciente()">
+              ✖
+            </button>
+          </div>
+          <form id="form-editar-paciente" class="formulario">
+            <input
+              id="editar-id"
+              type="number"
+              name="dni"
+              placeholder="Id"
+              hidden
+            />
+            <input
+              id="editar-nombre"
+              type="text"
+              name="nombre"
+              placeholder="Nombre"
+              maxlength="100"
+              required
+            />
+            <input
+              id="editar-apellido"
+              type="text"
+              name="apellido"
+              placeholder="Apellido"
+              maxlength="100"
+              required
+            />
+            <input
+              id="editar-dni"
+              type="number"
+              name="dni"
+              placeholder="DNI"
+              required
+            />
+            <input
+              id="editar-fecha"
+              type="date"
+              name="fecha_nacimiento"
+              placeholder="Fecha de nacimiento"
+              required
+            />
+            <input
+              id="editar-email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              maxlength="150"
+            />
+            <input
+              id="editar-tel"
+              type="tel"
+              name="telefono"
+              placeholder="Teléfono"
+              maxlength="50"
+            />
+            <button type="submit">Editar</button>
+          </form>
+        </div>
+      </div>
+      <div
+        id="modal-eliminar-paciente"
+        class="modal-overlay eliminar-dato"
+        style="display: none"
+      >
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Eliminar paciente</h5>
+            <button
+              class="modal-cerrar"
+              onclick="CerrarModalEliminarPaciente()"
+            >
+              ✖
+            </button>
+          </div>
+          <p>¿Estás seguro de que quieres eliminar este paciente?</p>
+          <button id="confirmar-eliminar" onclick="eliminarPaciente()">
+            Eliminar
+          </button>
+        </div>
+      </div>
+
+      <div id="modal-dni-existe" class="modal-overlay error-dato" style="display: none">
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Error</h5>
+            <button class="modal-cerrar" onclick="cerrarModalDniExiste()">
+              ✖
+            </button>
+          </div>
+          <p>
+            Ya existe un paciente con ese DNI.<br /> Modificalo.
+          </p>
+          <button onclick="cerrarModalDniExiste()">Aceptar</button>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <p>
+        TP2 - Introducción al Desarrollo de Software<br />
+        Matias Rowensztein - Alejo Segal
+      </p>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>

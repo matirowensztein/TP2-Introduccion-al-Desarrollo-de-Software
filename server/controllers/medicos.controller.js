@@ -48,6 +48,9 @@ const createMedico = async function (req, res) {
       telefono,
     });
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({ message: 'Ya existe un medico con esa matricula.' });
+    }
     console.error(error);
     res.status(500).json({ message: "Error al crear el medico" });
   }
@@ -76,6 +79,9 @@ const updateMedico = async function (req, res) {
 
     res.json({ message: "Medico actualizado correctamente" });
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({ message: 'Ya existe un medico con esa matricula.' });
+    }
     console.error(error);
     res.status(500).json({ message: "Error al actualizar el medico" });
   }

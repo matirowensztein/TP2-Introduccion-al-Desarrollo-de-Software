@@ -41,6 +41,9 @@ const createPaciente = async function (req, res) {
       telefono
     });
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({ message: 'Ya existe un paciente con ese DNI.' });
+    }
     console.error(error);
     res.status(500).json({ message: 'Error al crear el paciente' });
   }
@@ -62,6 +65,9 @@ const updatePaciente = async function (req, res) {
 
     res.json({ message: 'Paciente actualizado correctamente' });
   } catch (error) {
+    if (error.code === '23505') {
+      return res.status(409).json({ message: 'Ya existe un paciente con ese DNI.' });
+    }
     console.error(error);
     res.status(500).json({ message: 'Error al actualizar el paciente' });
   }
