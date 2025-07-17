@@ -5,7 +5,7 @@
 
 ## Cómo ejecutar el proyecto
 
-1. Clonar el repositorio:
+### 1. Clonar el repositorio:
 <img width="1626" height="826" alt="image" src="https://github.com/user-attachments/assets/0f9e294b-dd66-4789-a33c-ed4738c0868f" />
 
   ```bash
@@ -18,7 +18,7 @@
 
 
 
-2. Luego levanta el proyecto con la siguiente linea de codigo
+### 2. Luego levanta el proyecto con la siguiente linea de codigo
   ```bash
   docker-compose up -d
   ```
@@ -26,7 +26,7 @@
 
 
   
-3. Por ultimo accede a la pagina
+### 3. Por ultimo accede a la pagina
 
   ```bash
   http://localhost:3000/index.html
