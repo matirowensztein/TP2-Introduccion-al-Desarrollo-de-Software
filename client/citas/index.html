@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citas</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body id="citas">
+    <nav class="navbar">
+      <div class="navbar-left"><img src="../img/logo.png" class="logo" alt=""> Consultorio </div>
+      <div class="navbar-right">
+        <a href="../index.html">Inicio</a>
+        <a href="../pacientes/index.html">Pacientes</a>
+        <a href="../medicos/index.html">Médicos</a>
+        <a href="../citas/index.html">Citas</a>
+      </div>
+    </nav>
+
+    <main>
+      <h1 class="titulo">Citas</h1>
+
+      <div class="busqueda-agregar">
+        <div class="busqueda-cita">
+          <input type="number" id="inputNumerico" placeholder="Ingresa un id" min="1"/>
+          <button id="citasButton">Buscar cita</button>
+        </div>
+        <button id="abrir-modal-crear" onclick="AbrirModalCrearCita()">
+          Agregar cita
+        </button>
+      </div>
+
+      <div id="citas-list" class="lista"></div>
+      <span id="cero-citas">No se encontraron citas.</span>
+
+      <div id="modal-crear-cita" class="modal-overlay" style="display: none">
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Agregar cita</h5>
+            <button class="modal-cerrar" onclick="CerrarModalCrearCita()">
+              ✖
+            </button>
+          </div>
+          <form id="form-crear-cita" class="formulario">
+            <select id="crear-paciente" required></select>
+            <select id="crear-medico" required></select>
+            <input id="crear-fecha" type="datetime-local" required />
+            <input
+              id="crear-motivo"
+              type="text"
+              placeholder="Motivo"
+              required
+            />
+            <input
+              id="crear-estado"
+              type="text"
+              placeholder="Estado"
+              required
+            />
+            <input
+              id="crear-observaciones"
+              type="text"
+              placeholder="Observaciones"
+            />
+            <button type="submit">Crear cita</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="modal-editar-cita" class="modal-overlay" style="display: none">
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Editar cita</h5>
+            <button class="modal-cerrar" onclick="CerrarModalEditarCita()">
+              ✖
+            </button>
+          </div>
+          <form id="form-editar-cita" class="formulario">
+            <input id="editar-id" type="number" placeholder="ID" hidden />
+            <select id="editar-paciente" required></select>
+            <select id="editar-medico" required></select>
+            <input id="editar-fecha" type="datetime-local" required />
+            <input
+              id="editar-motivo"
+              type="text"
+              placeholder="Motivo"
+              required
+            />
+            <input
+              id="editar-estado"
+              type="text"
+              placeholder="Estado"
+              required
+            />
+            <input
+              id="editar-observaciones"
+              type="text"
+              placeholder="Observaciones"
+            />
+            <button type="submit">Editar cita</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="modal-info-paciente" class="modal-overlay" style="display: none">
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Información del paciente</h5>
+            <button class="modal-cerrar" onclick="CerrarModalInfoPaciente()">
+              ✖
+            </button>
+          </div>
+          <div id="info-paciente" class="formulario"></div>
+        </div>
+      </div>
+
+      <div id="modal-info-medico" class="modal-overlay" style="display: none">
+        <div class="modal-contenido">
+          <div class="modal-info-cerrar">
+            <h5>Información del médico</h5>
+            <button class="modal-cerrar" onclick="CerrarModalInfoMedico()">
+              ✖
+            </button>
+          </div>
+          <div id="info-medico" class="formulario"></div>
+        </div>
+      </div>
+
+      <div
+  id="modal-eliminar-cita"
+  class="modal-overlay eliminar-dato"
+  style="display: none"
+>
+  <div class="modal-contenido">
+    <div class="modal-info-cerrar">
+      <h5>Eliminar cita</h5>
+      <button
+        class="modal-cerrar"
+        onclick="CerrarModalEliminarCita()"
+      >
+        ✖
+      </button>
+    </div>
+    <p>¿Estás seguro de que quieres eliminar esta cita?</p>
+    <button id="confirmar-eliminar-cita">Eliminar</button>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="footer">
+      <p>
+        TP2 - Introducción al Desarrollo de Software<br />
+        Matias Rowensztein - Alejo Segal
+      </p>
+    </footer>
+
+    <script src="index.js"></script>
+  </body>
+</html>

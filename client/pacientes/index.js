@@ -10,6 +10,12 @@ const ceroPacientes = document.getElementById("cero-pacientes");
 const eliminarButton = document.getElementById("confirmar-eliminar");
 const modalDniExiste = document.getElementById("modal-dni-existe");
 
+  let fecha = new Date();
+  fecha.setDate(fecha.getDate());
+  let fechaMax = fecha.toISOString().split('T');
+  document.getElementById("crear-fecha").max = fechaMax[0];
+  document.getElementById("editar-fecha").max = fechaMax[0];
+
 const API_BASE = "http://localhost:8080";
 
 function mostrarModal(modal) {
@@ -147,7 +153,6 @@ formCrearPaciente.addEventListener("submit", async (e) => {
     
 
     if (res.status === 409) {
-      ocultarModal(modalCrearPaciente);
       mostrarModalDniExiste();
       return;
     }

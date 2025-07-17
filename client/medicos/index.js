@@ -8,6 +8,7 @@ const botonConfirmarEliminarMedico = document.getElementById("confirmar-eliminar
 const cargarMedicosButton = document.getElementById("medicosButton");
 const inputId = document.getElementById("inputNumerico");
 const ceroMedicos = document.getElementById("cero-medicos");
+const modalMatriculaExiste = document.getElementById("modal-matricula-existe");
 
 const API_BASE = "http://localhost:8080";
 
@@ -157,6 +158,11 @@ formCrearMedico.addEventListener("submit", async (e) => {
       }),
     });
 
+    if (res.status === 409) {
+      mostrarModalMatriculaExiste();
+      return;
+    }
+
     if (!res.ok) throw new Error("Error en la creación");
 
     formCrearMedico.reset();
@@ -192,8 +198,8 @@ formEditarMedico.addEventListener("submit", async (e) => {
       }),
     });
 
-    if (res.status === 404) {
-      alert("Médico no encontrado");
+    if (res.status === 409) {
+      mostrarModalMatriculaExiste();
       return;
     }
 
@@ -217,6 +223,12 @@ function CerrarModalAgregarMedico() {
 
 function CerrarModalEditarMedico() {
   ocultarModal(modalEditar);
+}
+function mostrarModalMatriculaExiste() {
+  mostrarModal(modalMatriculaExiste)
+}
+function cerrarModalMatriculaExiste() {
+  ocultarModal(modalMatriculaExiste)
 }
 
 cargarMedicos();

@@ -125,7 +125,8 @@ button:hover {
 }
 
 #cero-pacientes,
-#cero-medicos {
+#cero-medicos,
+#cero-citas {
   margin: auto;
   font-size: 24px;
   font-weight: bold;
@@ -148,14 +149,16 @@ button:hover {
 }
 
 .busqueda-paciente,
-.busqueda-medico {
+.busqueda-medico,
+.busqueda-cita {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .busqueda-paciente input,
-.busqueda-medico input {
+.busqueda-medico input,
+.busqueda-cita input {
   font-family: "Sora";
   padding: 8px;
   border-radius: 4px;
@@ -288,6 +291,18 @@ button:hover {
   align-items: center;
   gap: 8px;
   margin-top: 16px;
+}
+
+#citas .card .buttons-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+#citas .card .buttons-card button {
+  width: calc(50% - 4px);
 }
 
 .footer {
