@@ -16,7 +16,10 @@ const modalDniExiste = document.getElementById("modal-dni-existe");
   document.getElementById("crear-fecha").max = fechaMax[0];
   document.getElementById("editar-fecha").max = fechaMax[0];
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = window.location.hostname === "localhost"
+  ? "http://localhost:8080"
+  : "https://tp2-backend-ids.onrender.com";
+
 
 function mostrarModal(modal) {
   modal.style.display = "flex";

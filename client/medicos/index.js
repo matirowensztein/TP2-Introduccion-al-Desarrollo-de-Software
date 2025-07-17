@@ -10,7 +10,10 @@ const inputId = document.getElementById("inputNumerico");
 const ceroMedicos = document.getElementById("cero-medicos");
 const modalMatriculaExiste = document.getElementById("modal-matricula-existe");
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = window.location.hostname === "localhost"
+  ? "http://localhost:8080"
+  : "https://tp2-backend-ids.onrender.com";
+
 
 function mostrarModal(modal) {
   modal.style.display = "flex";
